@@ -36,3 +36,4 @@ When running the dashboard (`streamlit run run_dashboard.py` at `http://localhos
 4. **Recommended Specifications**:
    - Format: `PNG` (lossless for sharp typography and charts).
    - Recommended Resolution: `1920 × 1080` (1080p Full HD) or higher.
+
