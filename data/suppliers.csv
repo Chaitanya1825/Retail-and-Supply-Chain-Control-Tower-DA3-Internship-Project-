@@ -1,0 +1,11 @@
+supplier_id,supplier_name,contact_name,email,phone,city,country,reliability_score,created_at
+SUP-001,Apex Global Logistics,Alice Johnson,alice@apexlogistics.com,555-0101,Chicago,USA,94.5,2026-05-20 19:41:59.771283
+SUP-002,Prime Source Supply,Bob Smith,bsmith@primesource.com,555-0102,Dallas,USA,96.0,2026-05-20 19:41:59.771340
+SUP-003,Horizon Electronics Mfg,Carol Danvers,carol@horizonmfg.com,555-0103,San Jose,USA,91.2,2026-05-20 19:41:59.771355
+SUP-004,BlueWave Distribution,David Miller,dmiller@bluewave.com,555-0104,Seattle,USA,88.5,2026-05-20 19:41:59.771364
+SUP-005,Vertex Goods & Materials,Elena Rostova,elena@vertexgoods.com,555-0105,Atlanta,USA,97.5,2026-05-20 19:41:59.771373
+SUP-006,Pinnacle Packaging & Parts,Frank Castle,frank@pinnacle.com,555-0106,Denver,USA,89.0,2026-05-20 19:41:59.771382
+SUP-007,Beacon Industrial Corp,Grace Hopper,grace@beaconind.com,555-0107,Boston,USA,93.8,2026-05-20 19:41:59.771406
+SUP-008,Nexus Materials Direct,Henry Zhang,henry@nexusdirect.com,555-0108,New York,USA,95.2,2026-05-20 19:41:59.771415
+SUP-009,Pacific Freight & Imports,Isabel Morales,isabel@pacificfreight.com,555-0109,Los Angeles,USA,84.0,2026-05-20 19:41:59.771423
+SUP-010,Summit Retail Solutions,Jack Ryan,jack@summitretail.com,555-0110,Columbus,USA,92.0,2026-05-20 19:41:59.771433

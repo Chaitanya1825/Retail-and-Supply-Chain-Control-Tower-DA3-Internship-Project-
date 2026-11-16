@@ -1,0 +1,79 @@
+version: '3.8'
+
+# ==============================================================================
+# Retail and Supply Chain Control Tower - Docker Compose Services
+# Configured for maximum resource efficiency and standalone/modular execution.
+#
+# Profiles available:
+#   1. Airflow only:   docker compose --profile airflow up -d
+#   2. Superset only:  docker compose --profile superset up -d
+#   3. Full stack:     docker compose --profile all up -d
+# ==============================================================================
+
+x-airflow-common: &airflow-common
+  image: apache/airflow:2.8.1-python3.11
+  environment:
+    - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+    - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+    - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    - AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS=False
+    - AIRFLOW__WEBSERVER__EXPOSE_CONFIG=True
+    - AIRFLOW__WEBSERVER__SECRET_KEY=control_tower_secret_key_12345
+    - DB_HOST=host.docker.internal
+    - DB_PORT=5432
+    - DB_NAME=supply_chain_control_tower
+    - DB_USER=postgres
+    - DB_PASSWORD=${DB_PASSWORD:-postgres}
+    - ENABLE_EMAIL_ALERTS=false
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./scripts:/opt/airflow/scripts
+    - ./config:/opt/airflow/config
+    - ./sql:/opt/airflow/sql
+    - ./data:/opt/airflow/data
+    - ./requirements.txt:/opt/airflow/requirements.txt
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+
+services:
+  # ---------------------------------------------------------------------------
+  # 1. Standalone Airflow (Lightweight: Webserver + Scheduler in single process)
+  # ---------------------------------------------------------------------------
+  airflow-standalone:
+    <<: *airflow-common
+    container_name: control_tower_airflow
+    profiles: ["airflow", "all"]
+    ports:
+      - "8080:8080"
+    command: >
+      bash -c "pip install prophet psycopg2-binary scikit-learn scipy &&
+               airflow db init &&
+               airflow users create --username admin --password admin --firstname Control --lastname Tower --role Admin --email admin@example.com || true &&
+               airflow standalone"
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # 2. Apache Superset (Lightweight Business Intelligence Dashboard)
+  # ---------------------------------------------------------------------------
+  superset:
+    image: apache/superset:3.0.2
+    container_name: control_tower_superset
+    profiles: ["superset", "all"]
+    ports:
+      - "8088:8088"
+    environment:
+      - SUPERSET_SECRET_KEY=control_tower_superset_secret_key_9999
+      - TALISMAN_ENABLED=False
+      - WTFORMS_FIELD_TRIM_WHITESPACE=True
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./docs/superset:/home/superset/superset_assets
+    command: >
+      bash -c "pip install psycopg2-binary &&
+               superset db upgrade &&
+               superset fab create-admin --username admin --firstname Admin --lastname User --email admin@example.com --password admin || true &&
+               superset init &&
+               /usr/bin/run-server.sh"
+    restart: unless-stopped
+

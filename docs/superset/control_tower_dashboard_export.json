@@ -1,0 +1,101 @@
+{
+  "dashboard_title": "Retail and Supply Chain Control Tower",
+  "description": "Data Analytics Internship Project - Executive Supply Chain Performance, Forecasting & Risk Monitoring",
+  "css": "",
+  "charts": [
+    {
+      "slice_name": "Total Products Monitored",
+      "viz_type": "big_number_total",
+      "datasource": "v_kpi_summary",
+      "metric": "MAX(total_products_monitored)",
+      "header": "Total Products"
+    },
+    {
+      "slice_name": "Total Current Inventory Units",
+      "viz_type": "big_number_total",
+      "datasource": "v_kpi_summary",
+      "metric": "MAX(total_inventory_units)",
+      "header": "Current Inventory"
+    },
+    {
+      "slice_name": "Stock-Out Rate (%)",
+      "viz_type": "big_number_total",
+      "datasource": "v_kpi_summary",
+      "metric": "MAX(stock_out_rate)",
+      "header": "Stock-Out Rate"
+    },
+    {
+      "slice_name": "On-Time Delivery (%)",
+      "viz_type": "big_number_total",
+      "datasource": "v_kpi_summary",
+      "metric": "MAX(on_time_delivery_pct)",
+      "header": "On-Time Delivery %"
+    },
+    {
+      "slice_name": "Average Supplier Lead Time (Days)",
+      "viz_type": "big_number_total",
+      "datasource": "v_kpi_summary",
+      "metric": "MAX(avg_supplier_lead_time)",
+      "header": "Supplier Lead Time"
+    },
+    {
+      "slice_name": "Inventory Health Breakdown",
+      "viz_type": "pie",
+      "datasource": "v_inventory_status",
+      "groupby": [
+        "stock_health_status"
+      ],
+      "metric": "COUNT(*)",
+      "header": "Inventory Status"
+    },
+    {
+      "slice_name": "Supplier Lead Times & Delayed Deliveries",
+      "viz_type": "dist_bar",
+      "datasource": "v_shipment_performance",
+      "groupby": [
+        "supplier_name"
+      ],
+      "metric": "AVG(lead_time_days)",
+      "header": "Shipment Delays"
+    },
+    {
+      "slice_name": "7-Day Prophet Demand Forecast & Stockout Risk",
+      "viz_type": "line",
+      "datasource": "v_demand_forecast_summary",
+      "time_range": "No filter",
+      "metrics": [
+        "AVG(predicted_demand)",
+        "AVG(projected_stock_remaining)"
+      ],
+      "groupby": [
+        "forecast_date"
+      ],
+      "header": "Demand Forecasts"
+    },
+    {
+      "slice_name": "Z-Score Anomaly Outlier Alerts",
+      "viz_type": "table",
+      "datasource": "v_anomaly_feed",
+      "columns": [
+        "anomaly_type",
+        "entity_name",
+        "metric_value",
+        "baseline_mean",
+        "z_score",
+        "severity",
+        "detected_at"
+      ],
+      "header": "Anomaly Alerts"
+    },
+    {
+      "slice_name": "Seven-Day Supplier Delay Scenario Impact",
+      "viz_type": "bar",
+      "datasource": "v_what_if_delay_impact",
+      "groupby": [
+        "product_name"
+      ],
+      "metric": "SUM(estimated_units_shortage)",
+      "header": "Seven-Day Supplier Delay Scenario"
+    }
+  ]
+}

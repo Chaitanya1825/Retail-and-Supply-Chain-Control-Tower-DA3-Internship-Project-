@@ -1,0 +1,64 @@
+# Environment and Secret Variables (CRITICAL: Never commit credentials)
+.env
+.env.*
+!.env.example
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Apache Airflow State & Logs
+airflow.cfg
+airflow.db
+standalone_admin_password.txt
+webserver_config.py
+logs/
+*.log
+
+# Apache Superset State
+superset_home/
+.superset/
+
+# Streamlit State
+.streamlit/
+*.pyc
+
+# Database files & Local Dumps
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.sql.gz
+
+# Data Backups (Keep committed synthetic data/ CSVs only)
+data/*.tmp
+data/*.parquet
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE & Editor Configurations
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# OS System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db

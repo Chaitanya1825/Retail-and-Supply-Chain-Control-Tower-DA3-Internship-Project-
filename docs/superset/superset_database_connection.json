@@ -1,0 +1,30 @@
+{
+  "database_name": "Retail Control Tower PostgreSQL",
+  "sqlalchemy_uri": "postgresql://postgres:<your_password>@host.docker.internal:5432/supply_chain_control_tower",
+  "tables": [
+    {
+      "table_name": "v_kpi_summary",
+      "description": "Executive Top-Line KPI Summary (Stock-Out Rate, OTD%, Lead Time, Inventory)"
+    },
+    {
+      "table_name": "v_inventory_status",
+      "description": "Inventory Health, Reorder Levels, and Stock Status Breakdown"
+    },
+    {
+      "table_name": "v_shipment_performance",
+      "description": "Shipment Delays, Lead Time by Supplier, and Delivery Reliability"
+    },
+    {
+      "table_name": "v_demand_forecast_summary",
+      "description": "Prophet 7-Day Demand Forecasts & Projected Stockout Risks"
+    },
+    {
+      "table_name": "v_anomaly_feed",
+      "description": "Statistical Z-Score Anomaly Alerts (Demand Spikes & Shipment Delays)"
+    },
+    {
+      "table_name": "v_what_if_delay_impact",
+      "description": "What-If Scenario Simulation: 7-Day Supplier Delivery Delay Impact"
+    }
+  ]
+}
