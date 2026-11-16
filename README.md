@@ -11,7 +11,7 @@
   <a href="https://facebook.github.io/prophet/"><img src="https://img.shields.io/badge/Forecasting-Prophet%20v1.5-FF69B4?style=for-the-badge&logo=meta&logoColor=white" alt="Prophet" /></a>
   <a href="https://streamlit.io/"><img src="https://img.shields.io/badge/UI-Streamlit%20Dark-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit" /></a>
   <a href="https://airflow.apache.org/"><img src="https://img.shields.io/badge/Orchestrator-Apache%20Airflow-017CEE?style=for-the-badge&logo=apache-airflow&logoColor=white" alt="Airflow" /></a>
-  <a href="https://github.com/"><img src="https://img.shields.io/badge/Tests-27%2F27%20Passed%20(100%25)-10B981?style=for-the-badge&logo=checkmarx&logoColor=white" alt="Test Status" /></a>
+  <a href="https://github.com/Chaitanya1825/Retail-and-Supply-Chain-Control-Tower-DA3-Internship-Project-"><img src="https://img.shields.io/badge/Tests-27%2F27%20Passed%20(100%25)-10B981?style=for-the-badge&logo=checkmarx&logoColor=white" alt="Test Status" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-gray?style=for-the-badge" alt="License MIT" /></a>
 </p>
 
@@ -451,8 +451,9 @@ The database `supply_chain_control_tower` consists of **11 relational tables** a
 
 ### 1. Clone & Set Up Virtual Environment
 ```powershell
-# Navigate to workspace
-cd "c:\Users\HP\Desktop\Retail and Supply Chain Control Tower"
+# Clone the repository
+git clone https://github.com/Chaitanya1825/Retail-and-Supply-Chain-Control-Tower-DA3-Internship-Project-.git
+cd "Retail-and-Supply-Chain-Control-Tower-DA3-Internship-Project-"
 
 # Create virtual environment
 python -m venv venv
